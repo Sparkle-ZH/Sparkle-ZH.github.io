@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Sparkle-ZH.github.io</id>
-    <title>Sparkle_ZH  |||  A Newbie&apos;s Quest</title>
-    <updated>2021-01-13T12:46:58.736Z</updated>
+    <title>Sparkle_ZH -- A Newbie&apos;s Quest</title>
+    <updated>2021-01-13T12:56:47.692Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Sparkle-ZH.github.io"/>
     <link rel="self" href="https://Sparkle-ZH.github.io/atom.xml"/>
     <subtitle>More thoughtful, more accurate</subtitle>
     <logo>https://Sparkle-ZH.github.io/images/avatar.png</logo>
     <icon>https://Sparkle-ZH.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2021, Sparkle_ZH  |||  A Newbie&apos;s Quest</rights>
+    <rights>All rights reserved 2021, Sparkle_ZH -- A Newbie&apos;s Quest</rights>
     <entry>
         <title type="html"><![CDATA[Hello World!]]></title>
         <id>https://Sparkle-ZH.github.io/post/hello-world/</id>
