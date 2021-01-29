@@ -1,24 +1,225 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://Sparkle-ZH.github.io</id>
+    <id>http://localhost:4000</id>
     <title>Sparkle_ZH的小站</title>
-    <updated>2021-01-24T14:08:11.120Z</updated>
+    <updated>2021-01-29T13:50:52.259Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://Sparkle-ZH.github.io"/>
-    <link rel="self" href="https://Sparkle-ZH.github.io/atom.xml"/>
-    <subtitle>More thoughtful, more accurate</subtitle>
-    <logo>https://Sparkle-ZH.github.io/images/avatar.png</logo>
-    <icon>https://Sparkle-ZH.github.io/favicon.ico</icon>
+    <link rel="alternate" href="http://localhost:4000"/>
+    <link rel="self" href="http://localhost:4000/atom.xml"/>
+    <subtitle>OI真是个好东西</subtitle>
+    <logo>http://localhost:4000/images/avatar.png</logo>
+    <icon>http://localhost:4000/favicon.ico</icon>
     <rights>All rights reserved 2021, Sparkle_ZH的小站</rights>
     <entry>
-        <title type="html"><![CDATA[Hello World!]]></title>
-        <id>https://Sparkle-ZH.github.io/post/hello-world/</id>
-        <link href="https://Sparkle-ZH.github.io/post/hello-world/">
+        <title type="html"><![CDATA[USACO一月月赛总结&部分题解]]></title>
+        <id>http://localhost:4000/post/usaco-yi-yue-yue-sai-zong-jie-andbu-fen-ti-jie/</id>
+        <link href="http://localhost:4000/post/usaco-yi-yue-yue-sai-zong-jie-andbu-fen-ti-jie/">
         </link>
-        <updated>2021-01-13T12:32:00.000Z</updated>
-        <content type="html"><![CDATA[<h3 id="️-本人博客小站建立啦撒花">🏳️‍🌈 本人博客小站建立啦！撒花🌹！</h3>
-<h3 id="现在我要用蒟蒻的声音喊出">现在，我要用蒟蒻的声音喊出：</h3>
-<h1 id="hello-world">Hello World!</h1>
+        <updated>2021-01-27T12:01:09.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="写在前面">写在前面</h2>
+<blockquote>
+<p>一句话总结：铜组勉强AK，银组279完美考炸，只能说，菜是原罪</p>
+</blockquote>
+<ul>
+<li><strong>本人非常非常的菜</strong>，这是我第一次参加USACO。</li>
+</ul>
+<h2 id="铜组-bronze">铜组 Bronze</h2>
+<blockquote>
+<p>一句话总结：铜组花了两小时才做完，菜死了，不过至少AK了，也算给自己一个交代</p>
+</blockquote>
+<p><br>
+铜组是早上9:00开始参加的，当时立的Flag就是尽早AK。</p>
+<h3 id="t1-uddered-but-not-herd">T1 Uddered but not Herd</h3>
+<p><strong>题目传送门</strong><br>
+<a href="http://www.usaco.org/index.php?page=viewproblem2&amp;cpid=1083&amp;lang=zh">题目在这里哦~</a><br>
+<br>
+<strong>比赛历程&amp;题解</strong><br>
+最开始想复杂了，还以为需要求给定字符串在字母表的顺序下相邻逆序对的数量<br>
+接着分析了一下时间复杂度，发现可以直接考虑暴力枚举<br>
+代码见下：</p>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+string letters, str;
+int cnt, ans;
+
+int main() {
+	cin &gt;&gt; letters &gt;&gt; str;
+	
+	while (cnt &lt; str.size()) {
+		for (int i = 0; i &lt; 26; i++)
+			if (letters[i] == str[cnt]) cnt++;
+		ans++;
+	}
+	
+	printf(&quot;%d&quot;, ans);
+	
+	return 0;
+} 
+</code></pre>
+<h3 id="t2-even-more-odd-photos">T2 Even More Odd Photos</h3>
+<p><strong>题目传送门</strong><br>
+<a href="http://www.usaco.org/index.php?page=viewproblem2&amp;cpid=1084&amp;lang=zh">题目在这里哦~</a><br>
+<br>
+<strong>比赛历程&amp;题解</strong><br>
+最初理解错题意了，以为要按照输入的顺序进行划分，然后看着样例解释懵了5min<br>
+接着各种尝试dp&amp;贪心求解，发现都无路可行<br>
+重新审视了一下标题，<s>这Even与Odd不就是在提示你要奇偶分析吗（大雾</s><br>
+<br>
+（下方数学推导与<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext>LaTeX</mtext></mrow><annotation encoding="application/x-tex">\LaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.89883em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right:-0.36em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.68333em;"><span style="top:-2.904999em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord text"><span class="mord textrm sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.46782999999999997em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord text"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span>警告，<s>不想看可以直接跳过</s>）<br>
+<br>
+由三四年级的知识可知</p>
+<ul>
+<li>奇 + 奇 = 偶</li>
+<li>奇 + 偶 = 奇</li>
+<li>偶 + 偶 = 偶</li>
+</ul>
+<p>设<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>为数列中奇数个数，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span>为数列中偶数个数，可以进行分类讨论<br>
+若 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo>&lt;</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x &lt; y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span>:<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∵</mo></mrow><annotation encoding="application/x-tex">\because</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69224em;vertical-align:0em;"></span><span class="mrel amsrm">∵</span></span></span></span>  须一奇一偶搭配<br>
+又 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∵</mo></mrow><annotation encoding="application/x-tex">\because</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69224em;vertical-align:0em;"></span><span class="mrel amsrm">∵</span></span></span></span> 由偶可以变成偶却无法变成奇，只能由奇变成奇<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∴</mo></mrow><annotation encoding="application/x-tex">\therefore</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69224em;vertical-align:0em;"></span><span class="mrel amsrm">∴</span></span></span></span> 最优搭配必为 偶奇偶奇......偶奇偶<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∴</mo></mrow><annotation encoding="application/x-tex">\therefore</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69224em;vertical-align:0em;"></span><span class="mrel amsrm">∴</span></span></span></span> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>n</mi><mi>s</mi><mo>=</mo><mi>x</mi><mo>∗</mo><mn>2</mn><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">ans = x*2+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span><br>
+若 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo>=</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x = y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span>：<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∵</mo></mrow><annotation encoding="application/x-tex">\because</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69224em;vertical-align:0em;"></span><span class="mrel amsrm">∵</span></span></span></span> 须一奇一偶搭配<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∴</mo></mrow><annotation encoding="application/x-tex">\therefore</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69224em;vertical-align:0em;"></span><span class="mrel amsrm">∴</span></span></span></span> 最优搭配必为 偶奇偶奇......偶奇<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∴</mo></mrow><annotation encoding="application/x-tex">\therefore</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69224em;vertical-align:0em;"></span><span class="mrel amsrm">∴</span></span></span></span> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>n</mi><mi>s</mi><mo>=</mo><mi>x</mi><mo>∗</mo><mn>2</mn><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">ans = x*2+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></p>
+<pre><code class="language-cpp">for (int i = 1; i &lt;= n; i++) {
+	scanf(&quot;%d&quot;, &amp;a[i]);
+	if (a[i] &amp; 1) odd++;
+	else even++;
+}
+
+if (odd &lt; even) return 0&amp;(printf(&quot;%d&quot;, odd*2+1));
+if (odd == even) return 0&amp;(printf(&quot;%d&quot;, odd*2));
+</code></pre>
+<p>最难的情况就是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo>&gt;</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x &gt; y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span>了<br>
+首先考虑对于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y = 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>的一般解法:</p>
+<ul>
+<li>若<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mtext>  </mtext><mi>m</mi><mi>o</mi><mi>d</mi><mtext>  </mtext><mn>3</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x\;mod\;3 = 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">o</span><span class="mord mathdefault">d</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>，<s>打表找规律</s>可推出<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>n</mi><mi>s</mi><mo>=</mo><mrow><mo fence="true">[</mo><mi>x</mi><mi mathvariant="normal">/</mi><mn>3</mn><mo fence="true">]</mo></mrow><mo>∗</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">ans = \left[ x/3 \right] * 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">[</span><span class="mord mathdefault">x</span><span class="mord">/</span><span class="mord">3</span><span class="mclose delimcenter" style="top:0em;">]</span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span></li>
+<li>若<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mtext>  </mtext><mi>m</mi><mi>o</mi><mi>d</mi><mtext>  </mtext><mn>3</mn><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x\;mod\;3 = 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">o</span><span class="mord mathdefault">d</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>，<s>再次打表找规律</s>可推出<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>n</mi><mi>s</mi><mo>=</mo><mrow><mo fence="true">[</mo><mi>x</mi><mi mathvariant="normal">/</mi><mn>3</mn><mo fence="true">]</mo></mrow><mo>∗</mo><mn>2</mn><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">ans = \left[ x/3 \right] * 2 - 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">[</span><span class="mord mathdefault">x</span><span class="mord">/</span><span class="mord">3</span><span class="mclose delimcenter" style="top:0em;">]</span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></li>
+<li>若<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mtext>  </mtext><mi>m</mi><mi>o</mi><mi>d</mi><mtext>  </mtext><mn>3</mn><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x\;mod\;3 = 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">o</span><span class="mord mathdefault">d</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span>，<s>再次打表找规律</s>可推出<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>n</mi><mi>s</mi><mo>=</mo><mrow><mo fence="true">[</mo><mi>x</mi><mi mathvariant="normal">/</mi><mn>3</mn><mo fence="true">]</mo></mrow><mo>∗</mo><mn>2</mn><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">ans = \left[ x/3 \right] * 2 + 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">[</span><span class="mord mathdefault">x</span><span class="mord">/</span><span class="mord">3</span><span class="mclose delimcenter" style="top:0em;">]</span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></li>
+</ul>
+<p>接着考虑将<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo>&gt;</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x &gt; y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span>的情况化为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y = 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>的情况<br>
+可以把<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>看作<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi><mo>+</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">y + k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7777700000000001em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>（其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>为正整数）<br>
+接着就可以使用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo>=</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x = y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span>情况的处理方法进行处理，消去<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span>，就可以了<br>
+完整代码如下:</p>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int n, a[1005], odd, even, ans;
+
+int main() {
+	scanf(&quot;%d&quot;, &amp;n);
+	for (int i = 1; i &lt;= n; i++) {
+		scanf(&quot;%d&quot;, &amp;a[i]);
+		if (a[i] &amp; 1) odd++;
+		else even++;
+	}
+	
+	if (odd &lt; even) return 0&amp;(printf(&quot;%d&quot;, odd*2+1));
+	if (odd == even) return 0&amp;(printf(&quot;%d&quot;, odd*2));
+	
+	ans += even*2;
+	odd -= even;
+	
+	if (odd % 3 == 0) ans += odd/3*2;
+	if (odd % 3 == 1) ans += odd/3*2-1;
+	if (odd % 3 == 2) ans += odd/3*2+1;
+	
+	printf(&quot;%d&quot;, ans);
+		
+	return 0;
+} 
+</code></pre>
+<p><s>所以这真是一道<strong>良心</strong>思维题，花了我整整30min</s><br>
+另：看了官方题解，竟然可以这么简单？</p>
+<h3 id="t3-just-stalling">T3 Just Stalling</h3>
+<p><strong>题目传送门</strong><br>
+<a href="http://www.usaco.org/index.php?page=viewproblem2&amp;cpid=1085&amp;lang=zh">题目在这里哦~</a><br>
+<br>
+<strong>比赛历程&amp;题解</strong><br>
+这道题考场上调了好久，个人认为还是有<strong>亿</strong>点点难度的<br>
+<br>
+最开始一直向dp的角度思考，无果，反倒浪费了不少时间<br>
+接着完美地分析错误了时间复杂度，把全排列的时间复杂度硬是记成了<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>（真是菜死了），然后就TLE了，真好<br>
+又向容斥的角度思考，却发现自己根本不会写，心态有点小崩<br>
+最终开始考虑组合计数，分析不到3min，写代码不到5min，叫上去想着能多骗几分就不错了......<br>
+12个绿色的方框出现在了电脑屏幕上，然后......</p>
+<blockquote>
+<p>You have scored 1000 points in this contest.</p>
+</blockquote>
+<p>AK啦！</p>
+<p><br>
+<br>
+可以考虑直接使用加乘原理，不过这里还是给一下分析过程<br>
+我们知道，最高的奶牛能进入的牛棚其他奶牛都能进，第二高的奶牛能进入的牛棚，除了最高的奶牛之外的奶牛都能进，以此类推<br>
+所以最高的奶牛选了合适的牛棚之后，其他奶牛的可选牛棚一定都会少一个；第二个奶牛选了合适的牛棚之后，除了最高的奶牛之外的奶牛的可选牛棚一定又会少一个，以此类推<br>
+答案就是所有奶牛<strong>在选牛棚时</strong>的<strong>可选牛棚数量</strong>的乘积了<br>
+<br>
+我们再来理理思绪：</p>
+<ul>
+<li>首先将奶牛按身高<strong>从大到小</strong>排序</li>
+<li>然后模拟出奶牛选牛棚的过程，并算出每头奶牛选牛棚时的<strong>可选牛棚数量</strong></li>
+<li>最后计算出每头头奶牛的可选牛棚数量的<strong>乘积</strong>，就是答案啦</li>
+</ul>
+<p>我们首先<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>预处理出每个奶牛单独来看能进入几个牛棚</p>
+<pre><code class="language-cpp">for (int i = 1; i &lt;= n; i++)
+	for (int j = 1; j &lt;= n; j++)
+		if (a[j] &lt;= b[i]) num[i]++;
+</code></pre>
+<p>接着进行排序，其实我们不必对奶牛进行<strong>从大到小</strong>排序，只需要把<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mi>u</mi><mi>m</mi></mrow><annotation encoding="application/x-tex">num</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span></span></span></span>数组<strong>从小到大</strong>排序即可，毕竟可选牛棚越少就说明身高越高嘛</p>
+<pre><code class="language-cpp">sort(num+1, num+1+n);
+</code></pre>
+<p>然后就是计算答案了，从大到小选牛棚，每当一头牛选完牛棚其他牛的可选牛棚就会少一个，容易得出每只牛在选牛棚时可选牛棚的数量就是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mi>u</mi><mi>m</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>−</mo><mi>i</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">num[i]-i+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></p>
+<pre><code class="language-cpp">for (int i = 1; i &lt;= n; i++)
+	ans *= num[i]-i+1;
+</code></pre>
+<p>为了防抄题解，这里不给出完整代码哦~<br>
+<s>另：官方标程竟然更长？</s></p>
+<h2 id="银组-silver">银组 Silver</h2>
+<blockquote>
+<p>一句话总结：这次银组真不错，连300pt都没到，真是很高兴呢</p>
+</blockquote>
+<p>开场先看T1，表层思考5min，无果<br>
+接着开始画图思考，感觉可以使用set维护奶牛的位置<br>
+然后......这就是个并查集？<br>
+药丸药丸，我并查集几(wan)乎(quan)不(bu)打(hui)<br>
+开始思考更简单的方法，同样无果<br>
+眼看40min已过，赶紧跳到T2<br>
+<br>
+T2看完感觉像个神仙题，但还是硬着头皮去思考<br>
+各种推理，最终得出结论：<br>
+假设我们要求<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>[</mo><mn>1</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">s[1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord">1</span><span class="mclose">]</span></span></span></span>到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>[</mo><mi>n</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">s[n]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord mathdefault">n</span><span class="mclose">]</span></span></span></span>至少要涂几笔，而<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>n</mi><mi>s</mi><mo>[</mo><mi>i</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">ans[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span></span></span></span>表示<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>[</mo><mn>1</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">s[1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord">1</span><span class="mclose">]</span></span></span></span>到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>[</mo><mi>n</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">s[n]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord mathdefault">n</span><span class="mclose">]</span></span></span></span>至少要涂几笔<br>
+则对于所有的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>&lt;</mo><mo>=</mo><mi>i</mi><mo>&lt;</mo><mo>=</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">1 &lt;= i &lt;= n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68354em;vertical-align:-0.0391em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69862em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span><br>
+若左侧距离<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>[</mo><mi>i</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">s[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span></span></span></span>最近的字母相同的位置的下标，大于比左侧距离<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>[</mo><mi>i</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">s[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span></span></span></span>最近的字母小于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>[</mo><mi>i</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">s[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span></span></span></span>的位置的下标，则<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>n</mi><mi>s</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>=</mo><mi>a</mi><mi>n</mi><mi>s</mi><mo>[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">ans[i] = ans[i-1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span></p>
+<ul>
+<li>否则<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>n</mi><mi>s</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>=</mo><mi>a</mi><mi>n</mi><mi>s</mi><mo>[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo>]</mo><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">ans[i] = ans[i-1] + 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></li>
+</ul>
+<p>突然想到可以使用前缀和进行维护，急忙码完，结果样例都没过<br>
+debug好久发现区间之外不能涂色......心态有点小崩<br>
+于是码完暴力就去T3了<br>
+<br>
+T3是真的不会，于是直接乱搞交上去走人，一两个点过都觉得很好<br>
+又去看T1了<br>
+<br>
+T1又想了很久很久，实在不会，只能乖乖地去写暴力了<br>
+一个题都没有写出来......有些着急，却三线卡题<br>
+又在三题反复横跳了很久，结果一分都没有多拿<br>
+一看时间，已经快夜晚十一点了，就去睡觉了<br>
+<br>
+赛后看成绩只有279，或许也只能这样了<br>
+......<br>
+于是银组就在失望之中结束了<br>
+<br>
+另：你会发现铜组之中全是题解，银组之中没有题解，<s>毕竟实力不允许我写Silver题解啊</s></p>
+<h2 id="总结">总结</h2>
+<ul>
+<li>此次比赛铜组发挥不错，银组发挥很不行</li>
+<li>或许还是学到的算法不够，以为纯靠自己那稍稍好一点的思维就能拿高分</li>
+<li><s>早上精神很好，以后多在早上参加比赛</s></li>
+</ul>
+<h2 id="谢谢阅读">谢谢阅读！</h2>
 ]]></content>
     </entry>
 </feed>
